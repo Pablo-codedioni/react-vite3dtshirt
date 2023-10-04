@@ -9,10 +9,10 @@ export const EditorTabs = [
     name: "filepicker",
     icon: fileIcon,
   },
-  {
-    name: "aipicker",
-    icon: ai,
-  },
+  // {
+  //   name: "aipicker",
+  //   icon: ai,
+  // },
 ];
 
 export const FilterTabs = [
@@ -24,10 +24,10 @@ export const FilterTabs = [
     name: "stylishShirt",
     icon: stylishShirt,
   },
-  /*{
-    name: "submit",
-    icon: download,
-  },*/
+  // {
+  //   name: "submit",
+  //   icon: download,
+  // },
 ];
 
 export const DecalTypes = {

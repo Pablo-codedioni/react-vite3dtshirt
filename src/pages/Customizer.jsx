@@ -19,10 +19,23 @@ const Customizer = () => {
   const [generatingImg, setGeneratingImg] = useState(false);
 
   const [activeEditorTab, setActiveEditorTab] = useState('');
+  // const [activeEditorTab, setActiveEditorTab] = useState(false);
+
   const [activeFilterTab, setActiveFilterTab] = useState({
     logoShirt: true,
     stylishShirt: false,
   })
+
+  function handleClick(tabName) {
+    // If the current tab is active, close it by clicking again
+    if (activeEditorTab === tabName) {
+      setActiveEditorTab(null);
+    } else {
+      // Otherwise, activate the tab
+      setActiveEditorTab(tabName);
+    }
+  }
+
 
   // show tab content depending on the activeTab
   const generateTabContent = () => {
@@ -164,9 +177,10 @@ const Customizer = () => {
     <AnimatePresence>
       {!snap.intro && (
         <>
+        
           <motion.div
             key="custom"
-            className="absolute top-0 left-0 z-10"
+            className="absolute top-20 left-1 z-10"
             {...slideAnimation('left')}
           >
             <div className="flex items-center min-h-screen">
@@ -175,7 +189,10 @@ const Customizer = () => {
                   <Tab
                     key={tab.name}
                     tab={tab}
-                    handleClick={() => setActiveEditorTab(tab.name)}
+                    isActive={activeEditorTab === tab.name}
+                    handleClick={() => handleClick(tab.name)}
+      
+                    // handleClick={() => setActiveEditorTab(tab.name)}
                   />
                 ))}
 
@@ -190,7 +207,7 @@ const Customizer = () => {
           >
             <CustomButton
               type="filled"
-              title="Go Back"
+              title="Atras"
               handleClick={() => state.intro = true}
               customStyles="w-fit px-4 py-2.5 font-bold text-sm"
             />
