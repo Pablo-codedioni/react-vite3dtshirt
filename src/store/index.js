@@ -5,6 +5,8 @@ const state = proxy({
     color: '#EFBD48',
     isLogoTexture: true,
     isFullTexture: false,
+    position: [0, 0.04, 0.15],
+    scale:0.15,
     logoDecal: './kamaxtli.png',
     fullDecal: './kamaxtli.png',
 });

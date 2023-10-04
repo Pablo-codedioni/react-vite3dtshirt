@@ -6,8 +6,9 @@ import { Decal, useGLTF, useTexture } from '@react-three/drei';
 
 import state from '../store';
 
-const Shirt = () => {
+const Shirt = ({ decalPosition }) => {
   const snap = useSnapshot(state);
+  console.log(state.p1)
   const { nodes, materials } = useGLTF('shirt_baked.glb');
 
   const logoTexture = useTexture(snap.logoDecal);
@@ -37,15 +38,16 @@ const Shirt = () => {
 
         {snap.isLogoTexture && (
           <Decal 
-            position={[0, 0.04, 0.15]}
-            rotation={[0, 0, 0]}
-            scale={0.15}
+            position={state.position}
+            rotation={[0,0, 0]}
+            scale={state.scale}
             map={logoTexture}
             mapAnisotropy={16}
             depthTest={false}
             depthWrite={true}
           />
         )}
+        {console.log(state.p1)}
       </mesh>
     </group>
   )
