@@ -7,6 +7,9 @@ const state = proxy({
     isFullTexture: false,
     logoDecal: './fotocamera.jpg',
     fullDecal: './threejs.png',
+    ///Define position
+    position: [0, 0.04, 0.15],
+    scale:0.15,
 });
 
 export default state;

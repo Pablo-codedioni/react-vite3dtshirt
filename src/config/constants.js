@@ -24,10 +24,10 @@ export const FilterTabs = [
     name: "stylishShirt",
     icon: stylishShirt,
   },
-  {
+  /*{
     name: "submit",
     icon: download,
-  },
+  },*/
 ];
 
 export const DecalTypes = {
