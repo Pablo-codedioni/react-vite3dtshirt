@@ -24,19 +24,25 @@ const CameraRig = ({ children }) => {
       else targetPosition = [0,0,2];
     }
 
+    
     //set model camera position
     easing.damp3(
-      state.camera.position, targetPosition,0.25,delta
+      // state.camera.position, targetPosition,0.25,delta 
+      state.camera.position, targetPosition,0.20,delta  // Time to charge the shirt animation
     )
 
     //set the model rotation
     easing.dampE(
       group.current.rotation,
       [state.pointer.y / 10, -state.pointer.x / 5, 0],
-      0.25,
+      0.25, delta
     )
   })
 
+  // useFrame(({ clock }) => {
+  //   const a = clock.getElapsedTime();
+  //   group.current.rotation.y = a;
+  // });
   return (
     <group ref={group}>{children}</group>
   )

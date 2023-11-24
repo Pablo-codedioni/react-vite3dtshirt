@@ -200,6 +200,28 @@ const Customizer = () => {
               </div>
             </div>
           </motion.div>
+          {/* <motion.div
+            key="custom"
+            className="absolute top-20 right-1 z-10"
+            {...slideAnimation('right')}
+          >
+            <div className="flex items-center min-h-screen">
+              <div className="editortabs-container tabs">
+                {EditorTabs.map((tab) => (
+                  <Tab
+                    key={tab.name}
+                    tab={tab}
+                    isActive={activeEditorTab === tab.name}
+                    handleClick={() => handleClick(tab.name)}
+      
+                    // handleClick={() => setActiveEditorTab(tab.name)}
+                  />
+                ))}
+
+                {generateTabContent()}
+              </div>
+            </div>
+          </motion.div> */}
 
           <motion.div
             className="absolute z-10 top-5 right-5"

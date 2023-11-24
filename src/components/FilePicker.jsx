@@ -1,9 +1,38 @@
 import React from 'react'
+import { OrbitControls, PerspectiveCamera } from '@react-three/drei';
+import { TextureLoader, AlphaFormat } from 'three';
 
 import CustomButton from './CustomButton'
 import state from '../store';
 
 const FilePicker = ({ file, setFile, readFile, updateDecalPosition }) => {
+
+  const applyTransparency = async (imageUrl) => {
+    const loader = new TextureLoader();
+    const texture = await new Promise((resolve) => {
+      loader.load(imageUrl, (loadedTexture) => {
+        loadedTexture.format = AlphaFormat;
+        resolve(loadedTexture);
+      });
+    });
+
+    const transparentMaterialId = 'transparent_decal_material'; // ID del material transparente
+    const decal = (
+      <Decal
+        debug
+        materialId={transparentMaterialId} // Material con transparencia
+        map={texture}
+        position={[0, 0, 0]}
+        rotation={[0, 0, 0]}
+        scale={1}
+        depthTest={false}
+        depthWrite={true}
+      />
+    );
+    updateDecalPosition(decal);
+  };
+
+  
   return (
     <div className="filepicker-container">
       <div className="flex-1 flex flex-col">
@@ -24,6 +53,8 @@ const FilePicker = ({ file, setFile, readFile, updateDecalPosition }) => {
         <CustomButton 
           type="filled"
           title="Posición Inicial"
+          // handleClick={handleReadFile}
+
           handleClick={() => {state.position = [0, 0.04, 0.15]
           state.scale = 0.15}}
           customStyles="text-xs"
